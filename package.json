@@ -1,0 +1,22 @@
+{
+  "name": "developersi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukaszKudd/Developersi.git"
+  },
+  "author": "Łukasz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukaszKudd/Developersi/issues"
+  },
+  "homepage": "https://github.com/LukaszKudd/Developersi#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
