@@ -30,5 +30,13 @@ const questions = [
 ];
 
 app.get('/question', (req, res) => {
-    
+    if (goodAnswers === questions.length) {
+         res.json( {
+             winner: true,
+         });
+    } else {
+         res.json(
+             
+         );
+    }
 })
