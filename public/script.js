@@ -1,9 +1,11 @@
 function showNextQuestion() {
     fetch('/question', {
         method: 'GET',
-    }).then(data => {
+    })
+    .then( r =>  res.json())
+    .then( data => {
         console.log(data);
-    });
+    })
 }
 
 showNextQuestion();
