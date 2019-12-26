@@ -20,3 +20,13 @@ function showNextQuestion() {
 }
 
 showNextQuestion();
+
+function sendAnswer(answerIndex) {
+    fetch(`/answer/${answerIndex}`, {
+        method: 'POST',
+    })
+    .then( r =>  r.json())
+    .then( data => {
+        console.log(data);
+    });
+}

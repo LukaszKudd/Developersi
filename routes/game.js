@@ -1,5 +1,5 @@
 function gameRoutes(app) {
-    let goodAnswers = 0;
+let goodAnswers = 0;
 let callToAFriendUsed = false;
 let questionToTheCrowdUsed = false;
 let halfOnHalfUsed = false;
