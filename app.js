@@ -40,8 +40,12 @@ app.get('/question', (req, res) => {
              winner: true,
          });
     } else {
-         res.json(
-             
-         );
+        const nextQuestion = questions[goodAnswers];
+
+        const {question, answers} = nextQuestion;
+
+         res.json({
+            question, answers,
+         });
     }
-})
+});
