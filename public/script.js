@@ -30,3 +30,11 @@ function sendAnswer(answerIndex) {
         console.log(data);
     });
 }
+
+const buttons = document.querySelectorAll('button');
+for (const button of buttons) {
+    button.addEventListener('click', (event) => {
+        const answerIndex = event.target.dataset.answer;
+        console.log(answerIndex);
+    })
+}
