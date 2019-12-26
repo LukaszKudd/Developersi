@@ -37,6 +37,23 @@ app.get('/question', (req, res) => {
          });
     }
 });
+
+app.post('/answer/:index', (req, res) => {
+    const {index} = req.params;
+    const question = questions[goodAnswers];
+
+    if (question.correctAnswer === Number(index)) {
+         res.json({
+             correct: true,
+         });
+    } else {
+         res.json({
+             correct: false,
+         });
+    }
+});
 }
+
+
 
 module.exports = gameRoutes;
