@@ -41,10 +41,16 @@ app.get('/question', (req, res) => {
 app.post('/answer/:index', (req, res) => {
     const {index} = req.params;
     const question = questions[goodAnswers];
+    const isGoodAnswer = question.correctAnswer === Number(index);
 
+    if (isGoodAnswer) {
+
+    } else {
+
+    }
     
     res.json({
-         correct: question.correctAnswer === Number(index),
+         correct: isGoodAnswer,
     });
 });
 }
