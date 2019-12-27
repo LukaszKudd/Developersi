@@ -1,6 +1,13 @@
 const question = document.querySelector('#question');
+const gameBoard = document.querySelector('#game-board');
+const h2 = document.querySelector('h2');
 
 function fillQuestionElements(data) {
+    if (data.winner === true) {
+        gameBoard.style.display = 'none';
+        h2.innerText = 'WYGRANA!';
+        return;
+    }
     question.innerText = data.question;
 
     for (const i in data.answers) {
@@ -21,13 +28,20 @@ function showNextQuestion() {
 
 showNextQuestion();
 
+const goodAnswersSpan = document.querySelector('#good-answers');
+
+function handleAnswerFeedback(data) {
+    goodAnswersSpan.innerText = data.goodAnswers;
+    showNextQuestion();
+}
+
 function sendAnswer(answerIndex) {
     fetch(`/answer/${answerIndex}`, {
         method: 'POST',
     })
     .then( r =>  r.json())
     .then( data => {
-        console.log(data);
+        handleAnswerFeedback(data);
     });
 }
 

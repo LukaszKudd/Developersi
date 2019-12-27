@@ -1,5 +1,6 @@
 function gameRoutes(app) {
 let goodAnswers = 0;
+let isGameOver = false;
 let callToAFriendUsed = false;
 let questionToTheCrowdUsed = false;
 let halfOnHalfUsed = false;
@@ -27,9 +28,14 @@ app.get('/question', (req, res) => {
          res.json( {
              winner: true,
          });
+
+    } else if (isGameOver){
+        res.json( {
+            loser: true,
+        });
+
     } else {
         const nextQuestion = questions[goodAnswers];
-
         const {question, answers} = nextQuestion;
 
          res.json({
@@ -43,14 +49,21 @@ app.post('/answer/:index', (req, res) => {
     const question = questions[goodAnswers];
     const isGoodAnswer = question.correctAnswer === Number(index);
 
+    if (isGameOver) {
+         res.json({
+             loser: true,
+         });
+    }
+
     if (isGoodAnswer) {
-
+        goodAnswers ++;
     } else {
-
+        isGameOver = true;
     }
     
     res.json({
          correct: isGoodAnswer,
+         goodAnswers,
     });
 });
 }
