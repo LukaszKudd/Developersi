@@ -8,6 +8,13 @@ function fillQuestionElements(data) {
         h2.innerText = 'WYGRANA!';
         return;
     }
+
+    if (data.loser === true) {
+        gameBoard.style.display = 'none';
+        h2.innerText = 'Nie poszło tym razem, spróbuj ponownie';
+        return;
+    }
+
     question.innerText = data.question;
 
     for (const i in data.answers) {
