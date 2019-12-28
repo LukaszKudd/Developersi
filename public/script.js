@@ -6,12 +6,19 @@ function fillQuestionElements(data) {
     if (data.winner === true) {
         gameBoard.style.display = 'none';
         h2.innerText = 'WYGRANA!';
+        var btn = document.createElement("BUTTON");   
+        btn.innerHTML = "JESZCZE RAZ";                   
+        document.body.appendChild(btn);               
+        
         return;
     }
 
     if (data.loser === true) {
         gameBoard.style.display = 'none';
-        h2.innerText = 'Nie poszło tym razem, spróbuj ponownie';
+        var btn = document.createElement("BUTTON");   
+        btn.innerHTML = "JESZCZE RAZ";                   
+        document.body.appendChild(btn);  
+ 
         return;
     }
 

@@ -1,0 +1,9 @@
+body {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#game-board {
+    margin-top: 50px;
+}
