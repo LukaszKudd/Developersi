@@ -66,6 +66,27 @@ app.post('/answer/:index', (req, res) => {
          goodAnswers,
     });
 });
+
+app.get('/help/friend', (req, res) => {
+    if (callToAFriendUsed) {
+        return  res.json({
+            text: 'To koło ratunkowe jest jż wykorzystane.',
+        });
+    }
+
+    callToAFriendUsed = true;
+
+    const doesFriendKnowAnswer = Math.random() < 0.5;
+    const question = questions[goodAnswers];
+
+     res.json({
+         text: doesFriendKnowAnswer ? `Hmm, wydaje mi się, że poprawna odpowiedź to ${question.answers[question.correctAnswer]}` : 'Nie wem xD',
+     });
+
+});
+
 }
+
+
 
 module.exports = gameRoutes;

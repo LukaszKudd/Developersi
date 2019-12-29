@@ -7,8 +7,20 @@ function fillQuestionElements(data) {
         gameBoard.style.display = 'none';
         h2.innerText = 'WYGRANA!';
         var btn = document.createElement("BUTTON");   
-        btn.innerHTML = "JESZCZE RAZ";                   
-        document.body.appendChild(btn);               
+        btn.innerText = "JESZCZE RAZ"; 
+        btn.id = "buton";
+        document.body.appendChild(btn);         
+        
+        // btn.addEventListener('click', (event) => {
+        //     // ----------------------------------------------
+        //     // tu musi się ładować na nowo strona z pytaniami
+        //     // skasować licznik poprawnych odpowiedzi
+        //     fetch('/reset', {
+        //         method: 'GET',
+        //     }) 
+        //   }  // ______________________________________________
+        // );
+
         
         return;
     }
@@ -16,7 +28,7 @@ function fillQuestionElements(data) {
     if (data.loser === true) {
         gameBoard.style.display = 'none';
         var btn = document.createElement("BUTTON");   
-        btn.innerHTML = "JESZCZE RAZ";                   
+        btn.innerText = "JESZCZE RAZ";                   
         document.body.appendChild(btn);  
  
         return;
@@ -42,7 +54,7 @@ function showNextQuestion() {
 
 showNextQuestion();
 
-const goodAnswersSpan = document.querySelector('#good-answers');
+let goodAnswersSpan = document.querySelector('#good-answers');
 
 function handleAnswerFeedback(data) {
     goodAnswersSpan.innerText = data.goodAnswers;
@@ -59,11 +71,24 @@ function sendAnswer(answerIndex) {
     });
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('answer-bun');
 
 for (const button of buttons) {
     button.addEventListener('click', (event) => {
         const answerIndex = event.target.dataset.answer;
         sendAnswer(answerIndex);
+        console.log('klik');
     });
 }
+
+function callToAFriend() {
+    fetch('/help/friend', {
+        method: 'GET',
+    })
+        .then(r => r.json())
+        .then(data => {
+            console.log(data);
+        })
+};
+
+document.querySelector('#callToAFriend').addEventListener('click', callToAFriend);
